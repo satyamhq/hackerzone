@@ -3,7 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { signUpAction } from "../actions";
-import { Briefcase, Building2, GraduationCap, UserCheck } from "lucide-react";
+import { Briefcase, Building2, GraduationCap, UserCheck, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function SignUpPage() {
   const [role, setRole] = useState<"student" | "employer" | "institution_admin">("student");
@@ -23,122 +27,124 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12">
-      <div className="w-full max-w-md space-y-8 bg-background p-8 rounded-xl border shadow-sm">
-        <div className="text-center space-y-2">
-          <Link href="/" className="inline-flex items-center gap-2 font-bold text-2xl text-primary">
-            <Briefcase className="h-7 w-7" />
-            <span>Hackerzone</span>
+    <div className="flex min-h-screen items-center justify-center bg-[#FAFBFC] bg-radial-glow px-4 py-12">
+      <Card className="w-full max-w-md p-8 md:p-10 space-y-8 shadow-2xl bg-white border border-slate-100/80 rounded-3xl">
+        <div className="text-center space-y-3">
+          <Link href="/" className="inline-flex items-center gap-2.5 group">
+            <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md">
+              <Briefcase className="h-5 w-5 stroke-[2.5]" />
+            </div>
+            <span className="font-extrabold text-2xl tracking-tight text-slate-900">
+              Hackerzone
+            </span>
           </Link>
-          <h2 className="text-2xl font-bold tracking-tight">Create your account</h2>
-          <p className="text-sm text-muted-foreground">Select your role to get started</p>
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Create Your Account</h2>
+          <p className="text-xs text-slate-500 font-medium">Select your platform role to get started</p>
         </div>
 
         {errorMessage && (
-          <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md text-center">
+          <div className="p-3.5 text-xs text-rose-800 bg-rose-50 border border-rose-200 rounded-2xl text-center font-semibold animate-in fade-in-50">
             {errorMessage}
           </div>
         )}
 
         {/* Role Selection Tabs */}
-        <div className="grid grid-cols-3 gap-2 p-1 bg-muted rounded-lg text-center text-xs font-medium">
+        <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-slate-100 rounded-2xl text-center text-xs font-bold">
           <button
             type="button"
             onClick={() => setRole("student")}
-            className={`flex flex-col items-center gap-1 p-2 rounded-md transition-colors ${
-              role === "student" ? "bg-background text-primary shadow-sm font-semibold" : "text-muted-foreground hover:text-foreground"
+            className={`flex flex-col items-center gap-1 p-2.5 rounded-xl transition-all duration-150 ${
+              role === "student"
+                ? "bg-white text-slate-900 shadow-sm border border-slate-200/60"
+                : "text-slate-500 hover:text-slate-900"
             }`}
           >
-            <UserCheck className="h-4 w-4" />
+            <UserCheck className="h-4 w-4 text-blue-600" />
             <span>Student</span>
           </button>
           <button
             type="button"
             onClick={() => setRole("employer")}
-            className={`flex flex-col items-center gap-1 p-2 rounded-md transition-colors ${
-              role === "employer" ? "bg-background text-primary shadow-sm font-semibold" : "text-muted-foreground hover:text-foreground"
+            className={`flex flex-col items-center gap-1 p-2.5 rounded-xl transition-all duration-150 ${
+              role === "employer"
+                ? "bg-white text-slate-900 shadow-sm border border-slate-200/60"
+                : "text-slate-500 hover:text-slate-900"
             }`}
           >
-            <Building2 className="h-4 w-4" />
+            <Building2 className="h-4 w-4 text-indigo-600" />
             <span>Employer</span>
           </button>
           <button
             type="button"
             onClick={() => setRole("institution_admin")}
-            className={`flex flex-col items-center gap-1 p-2 rounded-md transition-colors ${
-              role === "institution_admin" ? "bg-background text-primary shadow-sm font-semibold" : "text-muted-foreground hover:text-foreground"
+            className={`flex flex-col items-center gap-1 p-2.5 rounded-xl transition-all duration-150 ${
+              role === "institution_admin"
+                ? "bg-white text-slate-900 shadow-sm border border-slate-200/60"
+                : "text-slate-500 hover:text-slate-900"
             }`}
           >
-            <GraduationCap className="h-4 w-4" />
+            <GraduationCap className="h-4 w-4 text-sky-600" />
             <span>Institution</span>
           </button>
         </div>
 
         <form action={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              required
-              placeholder="e.g. Rahul Sharma"
-              className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
-            />
-          </div>
+          <Input
+            label="Full Name"
+            type="text"
+            name="fullName"
+            required
+            placeholder="e.g. Sanya Sharma"
+          />
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Email Address</label>
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="you@example.com"
-              className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
-            />
-          </div>
+          <Input
+            label="Email Address"
+            type="email"
+            name="email"
+            required
+            placeholder="you@domain.com"
+          />
 
           {role === "student" && (
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Institution Email <span className="text-xs font-normal text-muted-foreground">(Optional for auto-affiliation)</span>
-              </label>
-              <input
-                type="email"
-                name="institutionEmail"
-                placeholder="student@iitb.ac.in"
-                className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
-              />
-            </div>
+            <Input
+              label="Institution Email (Optional)"
+              type="email"
+              name="institutionEmail"
+              placeholder="student@iitb.ac.in"
+            />
           )}
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold text-slate-700 tracking-wide">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               required
               minLength={6}
               placeholder="••••••••"
-              className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
+              className="flex h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 shadow-sm transition-all duration-200 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
             />
           </div>
 
-          <button
+          <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm transition-colors hover:bg-primary/90 disabled:opacity-50"
+            isLoading={isSubmitting}
+            variant="brand"
+            className="w-full justify-center shadow-lg shadow-blue-500/20 font-bold capitalize"
           >
-            {isSubmitting ? "Creating Account..." : `Sign Up as ${role.replace("_", " ")}`}
-          </button>
+            Create {role.replace("_", " ")} Account
+          </Button>
         </form>
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
           Already have an account?{" "}
-          <Link href="/sign-in" className="text-primary font-medium hover:underline">
+          <Link href="/sign-in" className="text-blue-600 font-extrabold hover:underline">
             Sign In
           </Link>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

@@ -4,7 +4,11 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { signInAction } from "../actions";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 function SignInForm() {
   const searchParams = useSearchParams();
@@ -28,38 +32,41 @@ function SignInForm() {
   }
 
   return (
-    <div className="w-full max-w-md space-y-8 bg-background p-8 rounded-xl border shadow-sm">
-      <div className="text-center space-y-2">
-        <Link href="/" className="inline-flex items-center gap-2 font-bold text-2xl text-primary">
-          <Briefcase className="h-7 w-7" />
-          <span>Hackerzone</span>
+    <Card className="w-full max-w-md p-8 md:p-10 space-y-8 shadow-2xl bg-white border border-slate-100/80 rounded-3xl">
+      <div className="text-center space-y-3">
+        <Link href="/" className="inline-flex items-center gap-2.5 group">
+          <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md">
+            <Briefcase className="h-5 w-5 stroke-[2.5]" />
+          </div>
+          <span className="font-extrabold text-2xl tracking-tight text-slate-900">
+            Hackerzone
+          </span>
         </Link>
-        <h2 className="text-2xl font-bold tracking-tight">Welcome back</h2>
-        <p className="text-sm text-muted-foreground">Sign in to your account</p>
+        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Welcome Back</h2>
+        <p className="text-xs text-slate-500 font-medium">Sign in to your career dashboard</p>
       </div>
 
       {errorMessage && (
-        <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md text-center">
+        <div className="p-3.5 text-xs text-rose-800 bg-rose-50 border border-rose-200 rounded-2xl text-center font-semibold animate-in fade-in-50">
           {errorMessage}
         </div>
       )}
 
-      <form action={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
-          />
-        </div>
+      <form action={handleSubmit} className="space-y-5">
+        <Input
+          label="Email Address"
+          type="email"
+          name="email"
+          required
+          placeholder="you@domain.com"
+        />
 
-        <div>
-          <div className="flex items-center justify-between mb-1">
-            <label className="block text-sm font-medium">Password</label>
-            <Link href="/forgot-password" className="text-xs text-primary font-medium hover:underline">
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-semibold text-slate-700 tracking-wide">
+              Password
+            </label>
+            <Link href="/forgot-password" className="text-xs font-bold text-blue-600 hover:underline">
               Forgot password?
             </Link>
           </div>
@@ -68,33 +75,34 @@ function SignInForm() {
             name="password"
             required
             placeholder="••••••••"
-            className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-1 focus:ring-ring"
+            className="flex h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 shadow-sm transition-all duration-200 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
           />
         </div>
 
-        <button
+        <Button
           type="submit"
-          disabled={isSubmitting}
-          className="w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm transition-colors hover:bg-primary/90 disabled:opacity-50"
+          isLoading={isSubmitting}
+          variant="brand"
+          className="w-full justify-center shadow-lg shadow-blue-500/20 font-bold"
         >
-          {isSubmitting ? "Signing In..." : "Sign In"}
-        </button>
+          Sign In to Account
+        </Button>
       </form>
 
-      <div className="text-center text-sm text-muted-foreground">
-        Don't have an account?{" "}
-        <Link href="/sign-up" className="text-primary font-medium hover:underline">
-          Sign Up
+      <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+        Don't have an account yet?{" "}
+        <Link href="/sign-up" className="text-blue-600 font-extrabold hover:underline">
+          Create Account Free
         </Link>
       </div>
-    </div>
+    </Card>
   );
 }
 
 export default function SignInPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12">
-      <Suspense fallback={<div className="text-center text-sm text-muted-foreground">Loading sign in...</div>}>
+    <div className="flex min-h-screen items-center justify-center bg-[#FAFBFC] bg-radial-glow px-4 py-12">
+      <Suspense fallback={<div className="text-center text-xs text-slate-400">Loading sign in form...</div>}>
         <SignInForm />
       </Suspense>
     </div>
