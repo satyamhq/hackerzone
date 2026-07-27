@@ -12,6 +12,10 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-slate-900 text-white shadow-soft hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5",
+        lime:
+          "bg-[#D3FB52] text-[#052326] font-bold hover:bg-[#c3f03b] shadow-md shadow-lime-500/20 hover:-translate-y-0.5",
+        dark:
+          "bg-[#14151C] text-white border border-white/20 hover:bg-slate-800 hover:border-white/40",
         brand:
           "bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5",
         secondary:

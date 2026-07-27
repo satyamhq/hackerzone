@@ -13,20 +13,23 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    /* Handshake Primary: Deep Blue Slate #0F172A / HSL 222.2 47.4% 11.2% */
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Handshake Primary: Deep Slate #14151C */
+    --primary: 228 17% 10%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Soft Blue #EFF6FF / HSL 214 100% 97% */
+    /* Handshake Accent Lime: #D3FB52 */
+    --lime-accent: 74 94% 65%;
+
+    /* Secondary: Soft Blue #EFF6FF */
     --secondary: 214 100% 97%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent Blue */
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent Cyan Blue */
+    --accent: 187 100% 74%;
+    --accent-foreground: 228 17% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -39,17 +42,17 @@
   }
 
   .dark {
-    --background: 222.2 47.4% 11.2%;
+    --background: 228 17% 10%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 228 17% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 228 17% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 74 94% 65%;
+    --primary-foreground: 228 17% 10%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -57,15 +60,15 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 91.2% 59.8%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 187 100% 74%;
+    --accent-foreground: 228 17% 10%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --ring: 74 94% 65%;
   }
 }
 
@@ -79,6 +82,14 @@
 }
 
 @layer utilities {
+  .handshake-hero-mesh {
+    background-color: #14151C;
+    background-image: 
+      radial-gradient(ellipse 60% 50% at 20% 0%, rgba(122, 243, 255, 0.28) 0%, transparent 70%),
+      radial-gradient(ellipse 55% 45% at 80% 10%, rgba(211, 251, 82, 0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 80%);
+  }
+
   .glass-card {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
@@ -86,10 +97,21 @@
     border: 1px solid rgba(226, 232, 240, 0.7);
   }
 
+  .glass-dark-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   .glass-header {
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(20, 21, 28, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .text-gradient-lime {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D3FB52] via-[#7AF3FF] to-white;
   }
 
   .text-gradient {
@@ -113,4 +135,5 @@
     box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.12), 0 8px 16px -6px rgba(15, 23, 42, 0.04);
   }
 }
+
 
