@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import {
   getStudentProfile,
   upsertStudentProfile,

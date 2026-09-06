@@ -1,21 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { signOutAction } from "@/app/(auth)/actions";
 import { NotificationBell } from "./notification-bell";
 import {
-  Briefcase,
   ChevronDown,
-  GraduationCap,
   LogOut,
   Menu,
-  Sparkles,
-  UserCheck,
-  Building2,
   X,
-  Search,
 } from "lucide-react";
 import { UserRole } from "@/types";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,7 +21,6 @@ export function Navbar() {
   const [userId, setUserId] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
 
   useEffect(() => {
     async function loadUser() {
@@ -68,154 +62,75 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-[#14151C]/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-3 text-white"
-          : "bg-[#14151C] border-b border-white/5 py-4 text-white"
+          ? "bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#3F3F3F] shadow-2xl py-3 text-white"
+          : "bg-[#0A0A0A] border-b border-[#3F3F3F]/50 py-4 text-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
-          <div className="h-10 w-10 rounded-2xl bg-[#D3FB52] text-[#052326] flex items-center justify-center font-extrabold shadow-md shadow-lime-500/20 group-hover:scale-105 transition-transform duration-200">
-            <Briefcase className="h-5 w-5 stroke-[2.5]" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-xl tracking-tight text-white leading-none">
-              Hackerzone
-            </span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-[#D3FB52]">
-              AI Career Network
-            </span>
-          </div>
+          <Image
+            src="/hackerzone-logo.svg"
+            alt="Hackerzone"
+            width={160}
+            height={36}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md text-xs font-semibold">
+        <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
           {!role && (
             <>
-              {/* Product Solutions Trigger */}
-              <div
-                className="relative"
-                onMouseEnter={() => setMegaMenuOpen(true)}
-                onMouseLeave={() => setMegaMenuOpen(false)}
-              >
-                <button className="flex items-center gap-1.5 px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
-                  <span>Employers & Solutions</span>
-                  <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                      megaMenuOpen ? "rotate-180 text-[#D3FB52]" : "text-slate-400"
-                    }`}
-                  />
-                </button>
-
-                {/* Dropdown Mega Menu */}
-                <AnimatePresence>
-                  {megaMenuOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-2 w-80 p-3 rounded-3xl bg-[#1C1D26] border border-white/15 shadow-2xl shadow-black/50 z-50 text-white"
-                    >
-                      <div className="space-y-1">
-                        <Link
-                          href="/for-students"
-                          className="flex items-start gap-3 p-3 rounded-2xl hover:bg-white/5 transition-colors group"
-                        >
-                          <div className="p-2 rounded-xl bg-blue-500/10 text-[#7AF3FF] group-hover:bg-[#7AF3FF] group-hover:text-black transition-colors">
-                            <UserCheck className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-white">
-                              For Job Seekers & Students
-                            </div>
-                            <div className="text-[11px] text-slate-400">
-                              Verified AI profiles & direct interviews
-                            </div>
-                          </div>
-                        </Link>
-
-                        <Link
-                          href="/for-employers"
-                          className="flex items-start gap-3 p-3 rounded-2xl hover:bg-white/5 transition-colors group"
-                        >
-                          <div className="p-2 rounded-xl bg-lime-500/10 text-[#D3FB52] group-hover:bg-[#D3FB52] group-hover:text-black transition-colors">
-                            <Building2 className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-white">
-                              For Employers
-                            </div>
-                            <div className="text-[11px] text-slate-400">
-                              Hire early talent and AI specialists
-                            </div>
-                          </div>
-                        </Link>
-
-                        <Link
-                          href="/for-institutions"
-                          className="flex items-start gap-3 p-3 rounded-2xl hover:bg-white/5 transition-colors group"
-                        >
-                          <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-colors">
-                            <GraduationCap className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-white">
-                              For Career Centers
-                            </div>
-                            <div className="text-[11px] text-slate-400">
-                              Placement analytics & university portals
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <Link
-                href="/for-students"
-                className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150"
-              >
-                Job Seekers
-              </Link>
               <Link
                 href="/for-employers"
-                className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150"
+                className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150"
               >
                 Employers
               </Link>
               <Link
-                href="/for-institutions"
-                className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150"
+                href="/for-students"
+                className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150"
               >
-                Career Centers
+                Job seekers
+              </Link>
+              <Link
+                href="/for-institutions"
+                className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150"
+              >
+                Career centers
+              </Link>
+              <Link
+                href="/arena"
+                className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150"
+              >
+                Skill Arena
               </Link>
               <Link
                 href="/jobs"
-                className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150"
+                className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150"
               >
-                Explore Jobs
+                Resources
               </Link>
             </>
           )}
 
           {role === "student" && (
             <>
-              <Link href="/student/dashboard" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/student/dashboard" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Dashboard
               </Link>
-              <Link href="/jobs" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/jobs" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Browse Jobs
               </Link>
-              <Link href="/student/applications" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/student/applications" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Applications
               </Link>
-              <Link href="/messages" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/messages" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Messages
               </Link>
             </>
@@ -223,16 +138,16 @@ export function Navbar() {
 
           {role === "employer" && (
             <>
-              <Link href="/employer/dashboard" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/employer/dashboard" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Dashboard
               </Link>
-              <Link href="/employer/jobs/new" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/employer/jobs/new" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Post Job
               </Link>
-              <Link href="/employer/jobs" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/employer/jobs" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Jobs List
               </Link>
-              <Link href="/messages" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/messages" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Messages
               </Link>
             </>
@@ -240,20 +155,20 @@ export function Navbar() {
 
           {role === "institution_admin" && (
             <>
-              <Link href="/institution/dashboard" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/institution/dashboard" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Dashboard
               </Link>
-              <Link href="/institution/students" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/institution/students" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Students
               </Link>
-              <Link href="/institution/events" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+              <Link href="/institution/events" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
                 Events
               </Link>
             </>
           )}
 
           {role === "admin" && (
-            <Link href="/admin/dashboard" className="px-4 py-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-150">
+            <Link href="/admin/dashboard" className="px-4 py-2 text-[#A3A3A3] hover:text-white transition-colors duration-150">
               Admin Panel
             </Link>
           )}
@@ -264,7 +179,7 @@ export function Navbar() {
           {userId ? (
             <div className="flex items-center gap-3">
               <NotificationBell userId={userId} />
-              <span className="text-xs px-3 py-1 rounded-full bg-[#D3FB52]/10 text-[#D3FB52] font-bold capitalize border border-[#D3FB52]/20">
+              <span className="text-xs px-3 py-1 rounded-full bg-white/10 text-white font-medium capitalize border border-white/20">
                 {role?.replace("_", " ")}
               </span>
               <form action={signOutAction}>
@@ -277,14 +192,14 @@ export function Navbar() {
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/sign-in">
-                <Button variant="dark" size="sm" className="bg-transparent border-white/20 hover:bg-white/10">
+                <button className="px-5 py-2 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors duration-150">
                   Log in
-                </Button>
+                </button>
               </Link>
               <Link href="/sign-up">
-                <Button variant="lime" size="sm" className="gap-1.5">
-                  <span>Sign up</span>
-                </Button>
+                <button className="px-5 py-2 text-sm font-medium text-[#0A0A0A] bg-white rounded-full hover:bg-gray-100 transition-colors duration-150">
+                  Sign up
+                </button>
               </Link>
             </div>
           )}
@@ -310,49 +225,52 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#14151C] border-b border-white/10 px-4 pt-3 pb-6 space-y-3"
+            className="md:hidden bg-[#0A0A0A] border-b border-[#3F3F3F] px-4 pt-3 pb-6 space-y-3"
           >
-            <div className="flex flex-col gap-2 text-sm font-semibold">
+            <div className="flex flex-col gap-2 text-sm font-medium">
               {!role && (
                 <>
-                  <Link href="/for-students" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">
-                    For Job Seekers
-                  </Link>
                   <Link href="/for-employers" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">
-                    For Employers
+                    Employers
+                  </Link>
+                  <Link href="/for-students" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">
+                    Job seekers
                   </Link>
                   <Link href="/for-institutions" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">
-                    For Career Centers
+                    Career centers
                   </Link>
-                  <Link href="/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">
-                    Explore Jobs
+                  <Link href="/arena" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-[#A3A3A3] hover:text-white">
+                    Skill Arena
+                  </Link>
+                  <Link href="/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-[#A3A3A3] hover:text-white">
+                    Resources
                   </Link>
                 </>
               )}
 
               {role === "student" && (
                 <>
-                  <Link href="/student/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Dashboard</Link>
-                  <Link href="/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Browse Jobs</Link>
-                  <Link href="/student/applications" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Applications</Link>
-                  <Link href="/messages" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Messages</Link>
+                  <Link href="/student/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Dashboard</Link>
+                  <Link href="/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Browse Jobs</Link>
+                  <Link href="/student/applications" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Applications</Link>
+                  <Link href="/messages" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Messages</Link>
                 </>
               )}
 
               {role === "employer" && (
                 <>
-                  <Link href="/employer/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Dashboard</Link>
-                  <Link href="/employer/jobs/new" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Post Job</Link>
-                  <Link href="/employer/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Jobs List</Link>
-                  <Link href="/messages" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Messages</Link>
+                  <Link href="/employer/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Dashboard</Link>
+                  <Link href="/employer/jobs/new" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Post Job</Link>
+                  <Link href="/employer/jobs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Jobs List</Link>
+                  <Link href="/messages" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Messages</Link>
                 </>
               )}
 
               {role === "institution_admin" && (
                 <>
-                  <Link href="/institution/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Dashboard</Link>
-                  <Link href="/institution/students" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Students</Link>
-                  <Link href="/institution/events" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl">Events</Link>
+                  <Link href="/institution/dashboard" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Dashboard</Link>
+                  <Link href="/institution/students" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Students</Link>
+                  <Link href="/institution/events" onClick={() => setMobileMenuOpen(false)} className="p-2.5 hover:bg-white/5 rounded-xl text-slate-200">Events</Link>
                 </>
               )}
             </div>
@@ -367,14 +285,14 @@ export function Navbar() {
               ) : (
                 <>
                   <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="dark" className="w-full justify-center">
+                    <button className="w-full px-5 py-2.5 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
                       Log in
-                    </Button>
+                    </button>
                   </Link>
                   <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="lime" className="w-full justify-center">
+                    <button className="w-full px-5 py-2.5 text-sm font-medium text-[#0A0A0A] bg-white rounded-full hover:bg-gray-100 transition-colors">
                       Sign up
-                    </Button>
+                    </button>
                   </Link>
                 </>
               )}

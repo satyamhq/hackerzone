@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { Github, Globe, Linkedin, MapPin, UserCheck } from "lucide-react";
 

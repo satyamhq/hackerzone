@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { getJobDetails, getSimilarJobs, submitJobApplication } from "@/lib/supabase/jobs";
 import { getStudentProfile } from "@/lib/supabase/students";
 import { ArrowLeft, Briefcase, Building2, CheckCircle2, MapPin, Send, Sparkles, X } from "lucide-react";

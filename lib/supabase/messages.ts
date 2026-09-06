@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { checkAndDeductMessageQuota } from "./employers";
 
 export async function getUserMessageThreads(userId: string) {

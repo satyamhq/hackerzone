@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { getEmployerCompany, createJob } from "@/lib/supabase/employers";
 import { createJobSchema } from "@/lib/validators";
 import { Plus, X } from "lucide-react";

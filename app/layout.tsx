@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Anton } from "next/font/google";
+import { buildMetadata } from "@/lib/metadata";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: "Hackerzone — The Premier Career Network for the AI Economy",
-  description:
-    "Connecting engineering talent, tech employers, and university career centers across India.",
-};
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+});
+
+export const metadata: Metadata = buildMetadata();
 
 export default function RootLayout({
   children,
@@ -21,10 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${plusJakarta.className} antialiased bg-[#FAFBFC] text-slate-900 selection:bg-blue-600 selection:text-white`}>
+      <body className={`${inter.variable} ${anton.variable} font-sans antialiased bg-[#0A0A0A] text-[#F5F5F5] selection:bg-white selection:text-black`}>
         {children}
       </body>
     </html>
   );
 }
-

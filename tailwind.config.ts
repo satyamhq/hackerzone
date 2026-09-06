@@ -17,6 +17,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["var(--font-anton)", "Archivo Black", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -24,30 +28,12 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0F172A", // Handshake Deep Blue Slate
-          foreground: "#FFFFFF",
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-          950: "#020617",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#EFF6FF", // Soft Blue
-          foreground: "#0F172A",
-        },
-        brand: {
-          blue: "#2563EB",
-          indigo: "#4F46E5",
-          soft: "#F0F7FF",
-          light: "#E0F2FE",
-          dark: "#0F172A",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -69,19 +55,30 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // B&W theme tokens
+        hz: {
+          black: "#0A0A0A",
+          charcoal: "#1A1A1A",
+          "near-black": "#141414",
+          "card-surface": "#161616",
+          white: "#FFFFFF",
+          "off-white": "#F5F5F5",
+          "light-gray": "#A3A3A3",
+          "border-gray": "#3F3F3F",
+          "dark-text": "#111111",
+        },
       },
       borderRadius: {
-        "2xl": "1.25rem", // 20px
-        "3xl": "1.5rem",  // 24px
-        "4xl": "2rem",    // 32px
+        "2xl": "1.25rem",
+        "3xl": "1.5rem",
+        "4xl": "2rem",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        soft: "0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 4px 12px -4px rgba(15, 23, 42, 0.03)",
-        glass: "0 20px 40px -15px rgba(37, 99, 235, 0.08), 0 8px 16px -6px rgba(15, 23, 42, 0.03)",
-        hover: "0 25px 50px -12px rgba(15, 23, 42, 0.12)",
+        soft: "0 10px 30px -10px rgba(0, 0, 0, 0.3), 0 4px 12px -4px rgba(0, 0, 0, 0.2)",
+        hover: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
       },
       keyframes: {
         "accordion-down": {
@@ -108,4 +105,3 @@ const config: Config = {
 };
 
 export default config;
-

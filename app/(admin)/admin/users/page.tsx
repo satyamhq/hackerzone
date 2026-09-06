@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { searchAdminUsers, toggleUserDeactivation } from "@/lib/supabase/admin";
 import { ArrowLeft, Search, UserCheck, UserX, Users } from "lucide-react";
 
