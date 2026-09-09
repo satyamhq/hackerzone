@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Home, ShieldAlert } from "lucide-react";
 
@@ -11,8 +12,16 @@ export default function NotFound() {
     <div className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] flex flex-col justify-between selection:bg-[#FAFAFA] selection:text-[#0A0A0A]">
       {/* Top micro status bar */}
       <div className="border-b border-[#262626] px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-mono text-xs tracking-wider uppercase text-[#A3A3A3] hover:text-[#FAFAFA] transition-colors">
-          HACKERZONE.IN / 404
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Image
+            src="/logo/hackerzone-logo.png"
+            alt="Hackerzone"
+            width={120}
+            height={30}
+            className="h-5 w-auto object-contain"
+            priority
+          />
+          <span className="font-mono text-xs text-[#737373]">/ 404</span>
         </Link>
         <div className="flex items-center gap-2 font-mono text-[11px] text-[#737373]">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-500/80 animate-pulse" />

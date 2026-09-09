@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
 import { UserRole } from "@/types/database.types";
 import { GraduationCap, Building2, Landmark, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
@@ -67,16 +68,21 @@ export default function LoginPage() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo / Brand Header */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block mb-3">
-            <span className="text-3xl md:text-4xl font-bold italic tracking-tight text-white font-serif">
-              Hackerzone
-            </span>
+          <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
+            <Image
+              src="/logo/hackerzone-logo.png"
+              alt="Hackerzone"
+              width={200}
+              height={50}
+              className="h-10 w-auto mx-auto object-contain"
+              priority
+            />
           </Link>
-          <h1 className="text-2xl md:text-3xl font-black italic uppercase tracking-tight text-white mt-2">
+          <h1 className="text-2xl md:text-3xl font-black italic uppercase tracking-tight text-white mt-1">
             Sign In to Hackerzone
           </h1>
           <p className="text-sm text-[#A3A3A3] mt-1">
-            The career network for the Indian AI economy.
+            The human intelligence network powering the AI economy.
           </p>
         </div>
 

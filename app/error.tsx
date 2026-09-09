@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 import { generateRequestId } from "@/lib/errors";
 
@@ -23,8 +24,16 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] flex flex-col justify-between selection:bg-[#FAFAFA] selection:text-[#0A0A0A]">
       <div className="border-b border-[#262626] px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-mono text-xs tracking-wider uppercase text-[#A3A3A3] hover:text-[#FAFAFA] transition-colors">
-          HACKERZONE.IN / ERROR
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Image
+            src="/logo/hackerzone-logo.png"
+            alt="Hackerzone"
+            width={120}
+            height={30}
+            className="h-5 w-auto object-contain"
+            priority
+          />
+          <span className="font-mono text-xs text-[#737373]">/ ERROR</span>
         </Link>
         <div className="flex items-center gap-2 font-mono text-[11px] text-[#737373]">
           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />

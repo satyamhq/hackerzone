@@ -103,11 +103,11 @@ export function Navbar() {
             onClick={() => setActiveMenu(null)}
           >
             <Image
-              src="/hackerzone-logo.svg"
+              src="/logo/hackerzone-logo.png"
               alt="Hackerzone"
               width={160}
-              height={36}
-              className="h-7 sm:h-8 w-auto"
+              height={40}
+              className="h-7 sm:h-8 w-auto object-contain"
               priority
             />
           </Link>
