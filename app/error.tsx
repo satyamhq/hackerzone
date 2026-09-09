@@ -26,7 +26,7 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
       <div className="border-b border-[#262626] px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Image
-            src="/logo/hackerzone-logo.png"
+            src="/hackerzone_logo.png"
             alt="Hackerzone"
             width={120}
             height={30}

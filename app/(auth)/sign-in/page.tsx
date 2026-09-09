@@ -37,7 +37,7 @@ function SignInForm() {
       <div className="text-center space-y-3">
         <Link href="/" className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#0A0A0A] hover:bg-[#1C1C1C] transition-colors shadow-md">
           <Image
-            src="/logo/hackerzone-logo.png"
+            src="/hackerzone_logo.png"
             alt="Hackerzone"
             width={160}
             height={40}

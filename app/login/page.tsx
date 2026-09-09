@@ -70,7 +70,7 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
             <Image
-              src="/logo/hackerzone-logo.png"
+              src="/hackerzone_logo.png"
               alt="Hackerzone"
               width={200}
               height={50}

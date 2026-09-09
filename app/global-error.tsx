@@ -22,9 +22,15 @@ export default function GlobalError({
     <html lang="en" className="dark">
       <body className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] font-sans antialiased flex flex-col justify-between m-0 p-0">
         <div className="border-b border-[#262626] px-6 py-4 flex items-center justify-between">
-          <span className="font-mono text-xs tracking-wider uppercase text-[#FAFAFA]">
-            HACKERZONE.IN / CRITICAL_FAULT
-          </span>
+          <div className="flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hackerzone_logo.png"
+              alt="Hackerzone"
+              className="h-5 w-auto object-contain"
+            />
+            <span className="font-mono text-xs text-[#737373]">/ CRITICAL_FAULT</span>
+          </div>
           <div className="flex items-center gap-2 font-mono text-[11px] text-red-400">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             ROOT_LAYOUT_EXCEPTION

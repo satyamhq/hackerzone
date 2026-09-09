@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { forgotPasswordAction } from "../actions";
 import { Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,13 +30,15 @@ export default function ForgotPasswordPage() {
     <div className="flex min-h-screen items-center justify-center bg-[#FAFBFC] bg-radial-glow px-4 py-12">
       <Card className="w-full max-w-md p-8 md:p-10 space-y-8 shadow-2xl bg-white border border-slate-100/80 rounded-3xl">
         <div className="text-center space-y-3">
-          <Link href="/" className="inline-flex items-center gap-2.5 group">
-            <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md">
-              <Briefcase className="h-5 w-5 stroke-[2.5]" />
-            </div>
-            <span className="font-extrabold text-2xl tracking-tight text-slate-900">
-              Hackerzone
-            </span>
+          <Link href="/" className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#0A0A0A] hover:bg-[#1C1C1C] transition-colors shadow-md">
+            <Image
+              src="/hackerzone_logo.png"
+              alt="Hackerzone"
+              width={160}
+              height={40}
+              className="h-7 w-auto object-contain"
+              priority
+            />
           </Link>
           <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Reset Password</h2>
           <p className="text-xs text-slate-500 font-medium">

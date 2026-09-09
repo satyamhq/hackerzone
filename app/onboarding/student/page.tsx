@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { SKILL_CATEGORIES } from "@/lib/constants/skillTaxonomy";
@@ -183,6 +185,16 @@ export default function StudentOnboardingPage() {
       <div className="w-full max-w-lg relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
+          <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
+            <Image
+              src="/hackerzone_logo.png"
+              alt="Hackerzone"
+              width={160}
+              height={40}
+              className="h-8 w-auto mx-auto object-contain"
+              priority
+            />
+          </Link>
           <div className="inline-flex items-center gap-2 mb-3">
             <GraduationCap className="w-6 h-6 text-white" />
             <span className="text-2xl font-bold italic tracking-tight text-white uppercase">

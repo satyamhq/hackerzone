@@ -13,7 +13,7 @@ export function Footer() {
           <div className="lg:col-span-5 space-y-5">
             <Link href="/" className="inline-block">
               <Image
-                src="/logo/hackerzone-logo.png"
+                src="/hackerzone_logo.png"
                 alt="Hackerzone"
                 width={160}
                 height={40}
