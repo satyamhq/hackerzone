@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hackerzone.in";
 const SITE_NAME = "Hackerzone";
-const DEFAULT_TITLE = "Hackerzone: The Career Network for the Indian AI Economy";
+const DEFAULT_TITLE = "Hackerzone: The Human Intelligence Network Powering the AI Economy";
 const DEFAULT_DESCRIPTION =
-  "The largest expert network for learning, earning, and growing careers in the AI economy — giving everyone an accessible first step into an AI-powered career.";
+  "Discover, verify, and deploy human expertise to train, evaluate, and supervise AI. The human intelligence infrastructure layer for the global AI economy.";
 
 interface BuildMetadataOptions {
   title?: string;

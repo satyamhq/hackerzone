@@ -34,7 +34,7 @@ export default function AdminVerificationsPage() {
           .eq("id", user.id)
           .single();
 
-        if (profile?.role === "admin") {
+        if ((profile as { role?: string } | null)?.role === "admin") {
           setIsAdmin(true);
           const [instList, compList] = await Promise.all([
             getPendingInstitutions(),

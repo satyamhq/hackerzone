@@ -34,7 +34,7 @@ export default function AdminDashboardPage() {
           .eq("id", user.id)
           .single();
 
-        if (profile?.role === "admin") {
+        if ((profile as { role?: string } | null)?.role === "admin") {
           setIsAdmin(true);
           const data = await getAdminPlatformMetrics();
           setMetrics(data);

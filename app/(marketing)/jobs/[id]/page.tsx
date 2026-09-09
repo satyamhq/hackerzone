@@ -48,9 +48,10 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
           .eq("id", user.id)
           .single();
 
-        setUserRole(profile?.role || "student");
+        const profileData = profile as { role?: any } | null;
+        setUserRole(profileData?.role || "student");
 
-        if (profile?.role === "student") {
+        if (profileData?.role === "student") {
           const studentData = await getStudentProfile(user.id);
           setStudentProfile(studentData);
         }

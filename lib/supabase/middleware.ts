@@ -63,8 +63,9 @@ export async function updateSession(request: NextRequest) {
       .eq("id", user.id)
       .single();
 
-    const role = profile?.role;
-    const isOnboarded = profile?.onboarding_completed;
+    const profileData = profile as { role?: string; onboarding_completed?: boolean } | null;
+    const role = profileData?.role;
+    const isOnboarded = profileData?.onboarding_completed;
 
     // If on /login or /sign-in, redirect directly to dashboard
     if (pathname === "/login" || pathname === "/sign-in" || pathname === "/sign-up") {

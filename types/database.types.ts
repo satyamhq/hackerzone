@@ -88,6 +88,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       skills: {
         Row: {
@@ -117,6 +118,7 @@ export interface Database {
           icon?: string | null;
           created_at?: string;
         };
+        Relationships: [];
       };
       user_skills: {
         Row: {
@@ -149,6 +151,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       challenges: {
         Row: {
@@ -208,6 +211,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       submissions: {
         Row: {
@@ -255,6 +259,7 @@ export interface Database {
           evaluator_feedback?: string | null;
           created_at?: string;
         };
+        Relationships: [];
       };
       campuses: {
         Row: {
@@ -305,6 +310,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       campus_members: {
         Row: {
@@ -340,6 +346,7 @@ export interface Database {
           department?: string | null;
           created_at?: string;
         };
+        Relationships: [];
       };
       companies: {
         Row: {
@@ -399,6 +406,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       company_members: {
         Row: {
@@ -425,6 +433,7 @@ export interface Database {
           is_approved?: boolean;
           created_at?: string;
         };
+        Relationships: [];
       };
       jobs: {
         Row: {
@@ -496,6 +505,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       applications: {
         Row: {
@@ -537,6 +547,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       events: {
         Row: {
@@ -602,6 +613,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       event_rsvps: {
         Row: {
@@ -625,6 +637,7 @@ export interface Database {
           status?: string;
           created_at?: string;
         };
+        Relationships: [];
       };
       message_threads: {
         Row: {
@@ -654,6 +667,7 @@ export interface Database {
           last_message_at?: string;
           created_at?: string;
         };
+        Relationships: [];
       };
       messages: {
         Row: {
@@ -683,6 +697,7 @@ export interface Database {
           is_read?: boolean;
           created_at?: string;
         };
+        Relationships: [];
       };
       mentors: {
         Row: {
@@ -736,6 +751,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       mentor_bookings: {
         Row: {
@@ -786,6 +802,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       resources: {
         Row: {
@@ -839,6 +856,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       reports: {
         Row: {
@@ -880,6 +898,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       audit_logs: {
         Row: {
@@ -912,6 +931,7 @@ export interface Database {
           ip_address?: string | null;
           created_at?: string;
         };
+        Relationships: [];
       };
       subscriptions: {
         Row: {
@@ -959,7 +979,21 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      user_role: UserRole;
+      profile_visibility: ProfileVisibility;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
     };
   };
 }

@@ -75,7 +75,7 @@ export async function signInAction(formData: FormData) {
     .eq("id", data.user.id)
     .single();
 
-  const role = profile?.role || "student";
+  const role = (profile as { role?: string } | null)?.role || "student";
 
   if (role === "student") {
     redirect("/student/dashboard");
